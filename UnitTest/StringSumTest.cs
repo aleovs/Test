@@ -21,6 +21,7 @@ namespace StringSumTest
         }
 
         [Theory]
+        [InlineData("-1", "-1", "-2", true)]
         [InlineData("-1", "0", "-1", true)]
         [InlineData("0", "-1", "-1", true)]
         [InlineData("0", "0", "0", true)]
