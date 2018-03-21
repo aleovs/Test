@@ -8,6 +8,7 @@ namespace StringSumTest
     public class StringSumTest
     {
         private const string MaxValue = "79228162514264337593543950335";
+        private const string MinValue = "-79228162514264337593543950335";
         private const string NotDigit = "a1b";
         private const string NotDigitWithWhiteSpace = " aa  ";
 
@@ -29,6 +30,8 @@ namespace StringSumTest
         [InlineData("12345678901234567890", "23232323232323232324", "35578002133557800214", true)]
         [InlineData(MaxValue, "0", MaxValue, true)]
         [InlineData("0", MaxValue, MaxValue, true)]
+        [InlineData(MinValue, "0", MinValue, true)]
+        [InlineData("0", MinValue, MinValue, true)]
         public void GetSum_ValidXAndValidY_ReturnsSum(string x, string y, string sum, bool success)
         {
             string result = stringSum.TryGetSum(x, y, out success);
@@ -49,6 +52,8 @@ namespace StringSumTest
         [InlineData("", NotDigitWithWhiteSpace, default(string), default(bool))]
         [InlineData(MaxValue, 1, default(string), default(bool))]
         [InlineData(1, MaxValue, default(string), default(bool))]
+        [InlineData(MinValue, -1, default(string), default(bool))]
+        [InlineData(-1, MinValue, default(string), default(bool))]
         public void GetSum_InValidXValidY_ReturnsNull(string x, string y, string sum, bool success)
         {
             string result = stringSum.TryGetSum(x, y, out success);

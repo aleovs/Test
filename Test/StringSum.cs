@@ -22,8 +22,13 @@ namespace Test
 
             if (AreDecimalsValid(validX, validY)) return sum;
             if (IsMaxValueExceeded(decimalX, decimalY)) return sum;
+            if (IsMinValueExceeded(decimalX, decimalY)) return sum;
+
             if (IsSumExceededMaxValue(decimalX, decimalY)) return sum;
             if (IsSumExceededMaxValue(decimalY, decimalX)) return sum;
+
+            if (IsSumExceededMinValue(decimalX, decimalY)) return sum;
+            if (IsSumExceededMinValue(decimalY, decimalX)) return sum;
 
             try
             {
@@ -49,11 +54,20 @@ namespace Test
             return x > decimal.MaxValue || y > decimal.MaxValue;
         }
 
+        private bool IsMinValueExceeded(decimal x, decimal y)
+        {
+            return x < decimal.MinValue || y < decimal.MinValue;
+        }
+
         private bool IsSumExceededMaxValue(decimal x, decimal y)
         {
             return x == decimal.MaxValue && y > 0;
         }
 
+        private bool IsSumExceededMinValue(decimal x, decimal y)
+        {
+            return x == decimal.MinValue && y < 0;
+        }
         private bool AreDecimalsValid(bool x, bool y)
         {
             return !x || !y;
