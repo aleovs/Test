@@ -17,7 +17,7 @@ namespace UnitTest
 
         [Theory]
         [InlineData(@"Data\SearchData.txt", "a", "b", 4, 4, 19, 29, 41, 50)]
-        public void Search_ValidXValidY_ReturnsMatchingResult(
+        public void Search_ValidInput_ReturnsMatchingResult(
             string filePath, 
             string x, 
             string y, 
@@ -29,7 +29,7 @@ namespace UnitTest
             string position4)
         {
             //arrange
-            string absolutePath = Path.Combine(testDirectoryPath, filePath);
+            string absolutePath = GetAbsoluteFilePath(filePath);
             microIndex = new MicroIndex(absolutePath);
 
             //act
@@ -46,7 +46,8 @@ namespace UnitTest
 
         [Theory]
         [InlineData(@"Data\SearchData.txt", "a1", "b1", 0, 0)]
-        public void Search_ValidXValidY_ReturnsNotFoundMatchingResult(
+        [InlineData("", default(string), default(string), 0, 0)]
+        public void Search_ValidInput_ReturnsNotFoundMatchingResult(
             string filePath,
             string x,
             string y,
@@ -54,7 +55,7 @@ namespace UnitTest
             int positionsCount)
         {
             //arrange
-            string absolutePath = Path.Combine(testDirectoryPath, filePath);
+            string absolutePath = GetAbsoluteFilePath(filePath);
             microIndex = new MicroIndex(absolutePath);
 
             //act
@@ -63,6 +64,11 @@ namespace UnitTest
             //assert
             Assert.Equal(numberOfWordsMatching, result.NumberOfWordsMatching);
             Assert.Equal(positionsCount, result.Positions.Count);
+        }
+
+        private string GetAbsoluteFilePath(string filePath)
+        {
+            return Path.Combine(testDirectoryPath, filePath);
         }
     }
 }
