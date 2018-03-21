@@ -14,7 +14,6 @@ namespace StringSumTest
 
         private IStringSum stringSum;
         
-
         public StringSumTest()
         {
             stringSum = new StringSum();
@@ -35,7 +34,12 @@ namespace StringSumTest
         [InlineData("0", MinValue, MinValue, true)]
         public void GetSum_ValidXAndValidY_ReturnsSum(string x, string y, string sum, bool success)
         {
+            //arrange
+
+            //act
             string result = stringSum.TryGetSum(x, y, out success);
+
+            //assert
             Assert.Equal(sum, result);
             Assert.True(success);
         }
@@ -57,7 +61,12 @@ namespace StringSumTest
         [InlineData(-1, MinValue, default(string), default(bool))]
         public void GetSum_InValidXValidY_ReturnsNull(string x, string y, string sum, bool success)
         {
+            //arrange
+
+            //act
             string result = stringSum.TryGetSum(x, y, out success);
+
+            //assert
             Assert.Equal(sum, result);
             Assert.False(success);
         }
