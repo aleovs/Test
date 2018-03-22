@@ -60,7 +60,7 @@ namespace Test
             }
             catch (Exception)
             {
-                Console.WriteLine("An exception has been occurred");
+                Console.WriteLine("An exception has been occurred while reading file content");
             }
             
             return fileContent;
