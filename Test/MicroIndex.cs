@@ -22,6 +22,9 @@ namespace Test
             SearchResult searchResult = new SearchResult();
             if (string.IsNullOrWhiteSpace(x) || string.IsNullOrWhiteSpace(y)) return searchResult;
 
+            /* Instead of GetFileContent(filePath) method 
+               GetFileContentAsync method could be used, but it's need to modify code.
+            */
             string fileContent = GetFileContent(filePath);
             if (string.IsNullOrWhiteSpace(fileContent)) return searchResult;
 
@@ -43,6 +46,7 @@ namespace Test
             return searchResult;
         }
 
+        //Sync method to read file
         private string GetFileContent(string filePath)
         {
             string fileContent = default(string);
@@ -60,6 +64,19 @@ namespace Test
             }
             
             return fileContent;
+        }
+
+        //Async method to read file
+        private async Task<string> GetFileContentAsync(string filePath)
+        {
+            byte[] result;
+            using (FileStream sourceStream = File.Open(filePath, FileMode.Open))
+            {
+                result = new byte[sourceStream.Length];
+                await sourceStream.ReadAsync(result, 0, (int)sourceStream.Length);
+            }
+
+            return Encoding.Unicode.GetString(result);
         }
     }
 }
