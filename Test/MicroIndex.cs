@@ -80,5 +80,7 @@ namespace Test
 
             return Encoding.Unicode.GetString(result);
         }
+
+        private void Test() { }
     }
 }
