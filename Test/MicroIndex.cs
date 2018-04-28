@@ -10,12 +10,9 @@ namespace Test
 {
     public class MicroIndex : IMicroIndex
     {
-        private int r;
         private string filePath;
 
         private string test = "";
-
-        private int done;
 
         public MicroIndex(string filePath)
         {
