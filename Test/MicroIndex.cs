@@ -82,5 +82,7 @@ namespace Test
         }
 
         private void TestMethod() { }
+
+        private void TestMethod1() { }
     }
 }
