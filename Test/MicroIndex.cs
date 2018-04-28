@@ -12,6 +12,8 @@ namespace Test
     {
         private string filePath;
 
+        private string test = "";
+
         public MicroIndex(string filePath)
         {
             this.filePath = filePath;
