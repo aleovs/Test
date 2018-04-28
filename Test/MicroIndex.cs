@@ -14,6 +14,8 @@ namespace Test
 
         private string test = "";
 
+        private int done;
+
         public MicroIndex(string filePath)
         {
             this.filePath = filePath;
