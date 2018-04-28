@@ -81,9 +81,5 @@ namespace Test
 
             return Encoding.Unicode.GetString(result);
         }
-
-        private void TestMethod() { }
-
-        private void TestMethod1() { }
     }
 }
