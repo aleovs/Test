@@ -12,7 +12,7 @@ namespace Test
     {
         private string filePath;
 
-        private string test = "1master-master1";
+        private string test = "2master-master2";
 
         public MicroIndex(string filePath)
         {
