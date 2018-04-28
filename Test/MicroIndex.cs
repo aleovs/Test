@@ -10,7 +10,7 @@ namespace Test
 {
     public class MicroIndex : IMicroIndex
     {
-        private string filePath;
+        private string filePath = "sdsdsd";
 
         private string test = "master-master";
 
